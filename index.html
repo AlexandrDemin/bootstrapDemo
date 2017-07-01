@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<title>Как настроить доступ приглашенного пользователя
+	к вашим приложениям</title>
+	</head>
+	<body>
+		<style type="text/css">
+			footer, header {
+				padding: 2rem 0;
+			}
+			header {
+				box-shadow: 0 2px 4px 0 rgba(37,38,39,0.24);
+			}
+			footer {
+				background-color: #D3D4D9;
+				box-shadow: inset 0 3px 4px 0 rgba(37,38,39,0.2);
+			}
+			.article-image {
+				box-shadow: 0 3px 5px 0 rgba(37,38,39,0.2);
+			}
+		</style>
+		<header class="container-fluid">
+			<nav class="container">
+				<a class="logo pull-left" href="index.html">
+					<img src="generic-logo.svg">
+				</a>
+				<div class="pull-right">
+					<form class="hidden-sm hidden-xs">
+						<input type="text" name="search">
+						<button type="submit" class="btn btn-default btn-sm">Искать</button>
+					</form>
+					<button class="toggle-menu visible-xs-inline-block visible-sm-inline-block btn btn-default">
+						<span class="glyphicon glyphicon-menu-hamburger"></span>
+					</button>
+				</div>
+			</nav>
+		</header>
+		<main class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<article class="content-block">
+						<h1>Как настроить доступ приглашенного пользователя к вашим приложениям?</h1>
+						<p>Управлять доступом приглашенного пользователя к вашим приложениям можно на странице «Управление пользователями»</p>
+						<p><img class="article-image img-responsive" src="img_1.png"></p>
+						<p>Нажмите на кнопку + для редактирования приложений. В выпадающем списке ваших приложений выберите приложение, доступ к которому вы желаете предоставить и нажмите кнопку «Привязать»</p>
+						<p><img class="article-image img-responsive" src="img_2.png"></p>
+						<p>Для того, чтобы закрыть доступ пользователю нажмите на крестик напротив нужного приложения.</p>
+					</article>
+					<form class="subscribe-form well well-lg text-center content-block">
+						<h2>Подписаться на обновления</h2>
+						<input type="email" name="email" id="email" placeholder="Электронная почта">
+						<button class="btn btn-default btn-sm">Подписаться</button>
+					</form>
+				</div>
+				<nav class="col-md-4 side-menu">
+				</nav>
+			</div>
+		</main>
+		<footer>
+			<div class="container">
+				Generic company 2018
+			</div>
+		</footer>
+	<script type="text/javascript">
+		$('.toggle-menu').on('click', function() {
+			$('.side-menu').toggle(200)
+		});
+	</script>
+	</body>
+</html>
