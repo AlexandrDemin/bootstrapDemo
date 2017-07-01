@@ -24,6 +24,40 @@
 			.article-image {
 				box-shadow: 0 3px 5px 0 rgba(37,38,39,0.2);
 			}
+			.subscribe-form {
+				overflow: hidden;
+				position: relative;
+			}
+			.subscribe-form:before {
+				content: "";
+				height: 100%;
+				width: 300px;
+				background: url(email.svg) 0px 50% no-repeat;
+				background-size: contain;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.input-group .form-control.search-fld {
+				margin-right: 10px;
+				width: auto;
+			}
+			.second-level {
+				padding-left: 20px;
+			}
+			@media (max-width: 768px) {
+				body {
+					position: relative;
+				}
+				.side-menu {
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: white;
+					z-index: 1;
+					min-height: 100%;
+				}
+			}
 		</style>
 		<header class="container-fluid">
 			<nav class="container">
@@ -58,7 +92,39 @@
 						<button class="btn btn-default btn-sm">Подписаться</button>
 					</form>
 				</div>
-				<nav class="col-md-4 side-menu">
+				<nav class="col-md-4 side-menu hidden-xs hidden-sm">
+					<div class="hidden-lg">
+			            <button type="button" class="close close-menu-mobile pull-right">×</button>
+			            <h2>Меню</h2>
+			            <form>
+			                <div class="input-group">
+			                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
+			                    <input type="text" class="form-control search-fld" placeholder="Поиск по справке" aria-describedby="basic-addon1">
+			                    <button type="submit" class="btn btn-default"><b>Искать</b></button>
+			                </div>
+			            </form>
+		            </div>
+		            <ul class="nav">
+		                <li role="presentation"><a href="#">Общие вопросы</a></li>
+		                <li role="presentation"><a href="#">Доступ в Кабинет&nbsp;<span class="label label-danger new">New</span></a></li>
+		                <li role="presentation"><a href="#">Вход и восстановление пароля</a></li>
+		                <li role="presentation"><a href="#">Статистика по услугам</a></li>
+		                <li role="presentation"><a href="#">Поисковое продвижение</a></li>
+		                <li role="presentation"><a href="#">Контекстная реклама</a></li>
+		                <li role="presentation"><a href="#">Документация</a></li>
+		                <li role="presentation"><a href="#">Бухгалтерская документация</a></li>
+		                <li role="presentation"><a href="#">Отчетная документация</a></li>
+		                <li role="presentation"><a href="#">Профиль и администрирование</a></li>
+		                <li role="presentation"><a href="#">Управление профилем</a></li>
+		                <li role="presentation"><a href="#">Управление доступом к приложениям</a></li>
+		                <li role="presentation"><a href="#">Предоставление доступов к аккаунтам Яндекса</a></li>
+		                <li role="presentation"><a href="#">Управление доступом к приложениям</a>
+		                	<ul class="nav second-level">
+		                        <li role="presentation"><a href="#">Как настроить доступ приглашенного пользователя к вашим приложениям?</a></li>
+		                        <li role="presentation"><a href="#">Add Comment Collapse</a></li>
+	                        </ul>
+                        </li>
+		            </ul>
 				</nav>
 			</div>
 		</main>
@@ -68,8 +134,20 @@
 			</div>
 		</footer>
 	<script type="text/javascript">
+		var sideMenuIsVisible = false;
 		$('.toggle-menu').on('click', function() {
-			$('.side-menu').toggle(200)
+			if(sideMenuIsVisible) {
+				$('.side-menu').attr('style', "display: none !important");
+			} else {
+				$('.side-menu').attr('style', "display: block !important");
+			}
+		});
+		$('.close-menu-mobile').on('click', function() {
+			if(sideMenuIsVisible) {
+				$('.side-menu').attr('style', "display: block !important");
+			} else {
+				$('.side-menu').attr('style', "display: none !important");
+			}
 		});
 	</script>
 	</body>
