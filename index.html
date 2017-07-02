@@ -55,6 +55,9 @@
 				padding-top: 2rem;
 				padding-bottom: 2rem;
 			}
+			.close-menu-mobile {
+				font-size: inherit;
+			}
 			@media (min-width: 768px) {
 				.side-menu {
 					position: static;
@@ -115,8 +118,10 @@
 				</div>
 				<nav class="col-sm-4 side-menu visible-sm-block visible-md-block visible-lg-block">
 					<div class="visible-xs-block">
-			            <button type="button" class="close close-menu-mobile pull-right">×</button>
-			            <h2>Меню</h2>
+			            <h2>
+			            	Меню
+			            	<button type="button" class="close close-menu-mobile pull-right">×</button>
+			            </h2>
 			            <form class="navbar-form">
 			                <div class="input-group">
 								<input type="text" class="form-control" placeholder="Поиск по справке">
