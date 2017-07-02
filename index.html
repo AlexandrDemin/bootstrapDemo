@@ -16,6 +16,7 @@
 			}
 			header {
 				box-shadow: 0 2px 4px 0 rgba(37,38,39,0.24);
+				background: white;
 			}
 			footer {
 				background-color: #D3D4D9;
@@ -25,18 +26,11 @@
 				box-shadow: 0 3px 5px 0 rgba(37,38,39,0.2);
 			}
 			.subscribe-form {
-				overflow: hidden;
-				position: relative;
+				background: url(email.svg) 0px 50%/contain no-repeat #fafafa;
 			}
-			.subscribe-form:before {
-				content: "";
-				height: 100%;
-				width: 300px;
-				background: url(email.svg) 0px 50% no-repeat;
-				background-size: contain;
-				position: absolute;
-				left: 0;
-				top: 0;
+			.subscribe-controls {
+				max-width: 330px;
+				margin: 0 auto;
 			}
 			.input-group .form-control.search-fld {
 				margin-right: 10px;
@@ -45,17 +39,30 @@
 			.second-level {
 				padding-left: 20px;
 			}
-			@media (max-width: 768px) {
-				body {
-					position: relative;
-				}
+			body {
+				position: relative;
+			}
+			.side-menu {
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: #fafafa;
+				z-index: 10;
+				min-height: 100%;
+				padding-top: 2rem;
+				padding-bottom: 2rem;
+			}
+			@media (min-width: 768px) {
 				.side-menu {
-					position: absolute;
-					top: 0;
-					left: 0;
-					background: white;
-					z-index: 1;
-					min-height: 100%;
+					position: static;
+				}
+				header {
+				    z-index: 1;
+				    position: fixed;
+				    width: 100%;
+				}
+				main {
+					padding-top: 90px;
 				}
 			}
 		</style>
@@ -65,11 +72,15 @@
 					<img src="generic-logo.svg">
 				</a>
 				<div class="pull-right">
-					<form class="hidden-sm hidden-xs">
-						<input type="text" name="search">
-						<button type="submit" class="btn btn-default btn-sm">Искать</button>
+					<form class="visible-sm-inline-block visible-md-inline-block visible-lg-inline-block navbar-form">
+						<div class="input-group">
+							<input type="email" class="form-control" placeholder="Поиск по справке">
+							<div class="input-group-btn">
+								<button type="submit" class="btn btn-default">Искать</button>
+							</div>
+						</div>
 					</form>
-					<button class="toggle-menu visible-xs-inline-block visible-sm-inline-block btn btn-default">
+					<button class="toggle-menu visible-xs-inline-block btn btn-default">
 						<span class="glyphicon glyphicon-menu-hamburger"></span>
 					</button>
 				</div>
@@ -77,7 +88,7 @@
 		</header>
 		<main class="container">
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-sm-8">
 					<article class="content-block">
 						<h1>Как настроить доступ приглашенного пользователя к вашим приложениям?</h1>
 						<p>Управлять доступом приглашенного пользователя к вашим приложениям можно на странице «Управление пользователями»</p>
@@ -88,20 +99,25 @@
 					</article>
 					<form class="subscribe-form well well-lg text-center content-block">
 						<h2>Подписаться на обновления</h2>
-						<input type="email" name="email" id="email" placeholder="Электронная почта">
-						<button class="btn btn-default btn-sm">Подписаться</button>
+						<div class="input-group subscribe-controls">
+							<input type="email" class="form-control" placeholder="Электронная почта">
+							<div class="input-group-btn">
+								<button class="btn btn-default">Подписаться</button>
+							</div>
+						</div>
 					</form>
 				</div>
-				<nav class="col-md-4 side-menu hidden-xs hidden-sm">
-					<div class="hidden-lg">
+				<nav class="col-sm-4 side-menu visible-sm-block visible-md-block visible-lg-block">
+					<div class="visible-xs-block">
 			            <button type="button" class="close close-menu-mobile pull-right">×</button>
 			            <h2>Меню</h2>
-			            <form>
+			            <form class="navbar-form">
 			                <div class="input-group">
-			                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
-			                    <input type="text" class="form-control search-fld" placeholder="Поиск по справке" aria-describedby="basic-addon1">
-			                    <button type="submit" class="btn btn-default"><b>Искать</b></button>
-			                </div>
+								<input type="text" class="form-control" placeholder="Поиск по справке">
+								<div class="input-group-btn">
+									<button class="btn btn-default">Искать</button>
+								</div>
+							</div>
 			            </form>
 		            </div>
 		            <ul class="nav">
@@ -134,21 +150,18 @@
 			</div>
 		</footer>
 	<script type="text/javascript">
-		var sideMenuIsVisible = false;
-		$('.toggle-menu').on('click', function() {
+		var sideMenuIsVisible = false,
+			menuVisibleClasses = 'visible-sm-block visible-md-block visible-lg-block';
+		function toggleMenu() {
 			if(sideMenuIsVisible) {
-				$('.side-menu').attr('style', "display: none !important");
+				$('.side-menu').addClass(menuVisibleClasses);
+				sideMenuIsVisible = false;
 			} else {
-				$('.side-menu').attr('style', "display: block !important");
+				$('.side-menu').removeClass(menuVisibleClasses);
+				sideMenuIsVisible = true;
 			}
-		});
-		$('.close-menu-mobile').on('click', function() {
-			if(sideMenuIsVisible) {
-				$('.side-menu').attr('style', "display: block !important");
-			} else {
-				$('.side-menu').attr('style', "display: none !important");
-			}
-		});
+		}
+		$('.toggle-menu, .close-menu-mobile').on('click', toggleMenu);
 	</script>
 	</body>
 </html>
